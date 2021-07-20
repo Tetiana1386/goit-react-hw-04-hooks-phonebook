@@ -41,8 +41,8 @@ function App() {
     }
   };
 
-  const handleDeleteContact = id => {
-    setContacts(contacts.filter(contact => contact.id !== id));
+  const handleDeleteContact = contactId => {
+    setContacts(contacts.filter(({ id }) => id !== contactId));
   };
 
   const changeFilter = event => {
@@ -61,7 +61,7 @@ function App() {
       <h1>Phonebook</h1>
       <ContactForm onSubmit={handleAddContact} />
       <h2>Contacts</h2>
-      {contacts.lenght > 1 && <Filter value={filter} onChange={changeFilter} />}
+      {contacts.length > 1 && <Filter value={filter} onChange={changeFilter} />}
       {contacts.length > 0 ? (
         <ContactList
           contacts={getVisibleContacts()}
